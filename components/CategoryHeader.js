@@ -10,7 +10,9 @@ function CategoryHeader() {
     <div className="bg-[rgb(45,54,77)] text-white font-semibold tracking-wide px-10 py-4">
       <Breadcrumb separator="-   -">
         <BreadcrumbItem>
-          <BreadcrumbLink className="px-5">Men</BreadcrumbLink>
+          <BreadcrumbLink className="px-5" isCurrentPage>
+            Men
+          </BreadcrumbLink>
         </BreadcrumbItem>
 
         <BreadcrumbItem>

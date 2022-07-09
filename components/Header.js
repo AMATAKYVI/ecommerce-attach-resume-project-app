@@ -11,7 +11,7 @@ function Header() {
           />
           <p>PG</p>
         </div>
-        <div className="w-[50%]">
+        <div className="w-[56%]">
           <div className="relative flex items-center ">
             <input
               type="text"
@@ -40,6 +40,26 @@ function Header() {
         </div>
         <div className="flex gap-10 items-center">
           <div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+              />
+            </svg>
+            <div className="text-sm text-gray-300">
+              <p>US</p>
+              <p></p>
+            </div>
+          </div>
+          <div>
             <div className="text-white flex flex-col items-center font-semibold ">
               <div className="relative ">
                 <svg
@@ -57,7 +77,7 @@ function Header() {
                   />
                 </svg>
                 <span className="absolute -top-2 -right-1 bg-amber-400 rounded-full text-sm px-1  font-bold text-black">
-                  2
+                  0
                 </span>
               </div>
 

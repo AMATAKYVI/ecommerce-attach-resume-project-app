@@ -4,6 +4,7 @@ import CategoryHeader from '../components/CategoryHeader';
 import Header from '../components/Header';
 import { Divider } from '@chakra-ui/react';
 import Hero from '../components/Hero';
+import Footer from '../components/Footer';
 
 export default function Home() {
   return (
@@ -16,8 +17,14 @@ export default function Home() {
       <div className=" text-white  ">
         <Header />
         <CategoryHeader />
-        <Divider className="bg-black pt-[0.4px]" />
+        <Divider className="bg-gray-500 pt-[0.4px]" />
+      </div>
+      <div className=" text-black  ">
         <Hero />
+        <Divider className="bg-gray-500 pt-[0.4px]" />
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );
