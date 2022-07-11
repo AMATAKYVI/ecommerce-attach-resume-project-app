@@ -6,6 +6,7 @@ import { Divider } from '@chakra-ui/react';
 import Footer from '../components/Footer';
 import CartContainer from '../components/CartContainer';
 
+//Was created in 07/11/2022 Monday
 function cart() {
   return (
     <div className="">
@@ -19,7 +20,7 @@ function cart() {
         <CategoryHeader />
         <Divider className="bg-gray-500 pt-[0.4px]" />
       </div>
-      <div className="h-[70vh]">
+      <div>
         <CartContainer />
       </div>
       <div className="">

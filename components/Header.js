@@ -45,8 +45,8 @@ function Header() {
             </div>
           </div>
         </div>
-        <div className="flex gap-10 items-center cursor-pointer hover:text-gray-300 transition-all duration-300 ">
-          <div>
+        <div className="flex gap-10 items-center  ">
+          <div className="cursor-pointer hover:text-gray-300 transition-all duration-300">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-7 w-7"
