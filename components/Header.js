@@ -1,9 +1,16 @@
+import { useRouter } from 'next/router';
 import React from 'react';
 function Header() {
+  const router = useRouter();
   return (
     <div className=" px-5 bg-[rgb(17,24,40)]">
       <div className="flex items-center text-white justify-between ">
-        <div className="text-lg flex items-center">
+        <div
+          className="text-lg flex items-center cursor-pointer"
+          onClick={() => {
+            router.push('/');
+          }}
+        >
           <img
             src="logowithrmbg.png"
             className="w-[70px] h-[70px] object-contain"
@@ -38,7 +45,7 @@ function Header() {
             </div>
           </div>
         </div>
-        <div className="flex gap-10 items-center">
+        <div className="flex gap-10 items-center cursor-pointer hover:text-gray-300 transition-all duration-300 ">
           <div>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -60,7 +67,12 @@ function Header() {
             </div>
           </div>
           <div>
-            <div className="text-white flex flex-col items-center font-semibold ">
+            <div
+              onClick={() => {
+                router.push('/cart');
+              }}
+              className="cursor-pointer hover:text-gray-300 transition-all duration-300 text-white flex flex-col items-center font-semibold "
+            >
               <div className="relative ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

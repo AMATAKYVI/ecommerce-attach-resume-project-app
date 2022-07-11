@@ -1,12 +1,12 @@
 import Head from 'next/head';
-import Image from 'next/image';
+import React from 'react';
 import CategoryHeader from '../components/CategoryHeader';
 import Header from '../components/Header';
 import { Divider } from '@chakra-ui/react';
-import BodyMain from '../components/BodyMain';
 import Footer from '../components/Footer';
+import CartContainer from '../components/CartContainer';
 
-export default function Home() {
+function cart() {
   return (
     <div className="">
       <Head>
@@ -19,13 +19,14 @@ export default function Home() {
         <CategoryHeader />
         <Divider className="bg-gray-500 pt-[0.4px]" />
       </div>
-      <div className=" text-black  ">
-        <BodyMain />
-        <Divider className="bg-gray-500 pt-[0.4px]" />
+      <div className="h-[70vh]">
+        <CartContainer />
       </div>
-      <div>
+      <div className="">
         <Footer />
       </div>
     </div>
   );
 }
+
+export default cart;
