@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { Pagination, Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { dummyData } from '../dummyData';
 
 function BodyHightlight() {
   const navigationPrevRef = useRef(null);
@@ -17,9 +18,9 @@ function BodyHightlight() {
       </div>
 
       <Swiper
-        slidesPerView={5}
+        slidesPerView={3}
         spaceBetween={20}
-        centeredSlides={true}
+        centeredSlides={false}
         navigation={{
           prevEl: navigationPrevRef.current,
           nextEl: navigationNextRef.current,
@@ -34,64 +35,41 @@ function BodyHightlight() {
         modules={[Pagination, Autoplay, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <img
-            src="https://m.media-amazon.com/images/I/911VnAiWhhS._AC_UL320_.jpg"
-            className="h-[300px] rounded-lg object-cover"
-            alt=""
-          />
-          <div className="mt-3 tracking-wide">
-            <p className="text-xl font-bold mb-2">Product Name Here</p>
-            <p>Product Description Here...</p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://m.media-amazon.com/images/I/91zKgnhp8UL._AC_UL320_.jpg"
-            className="h-[300px] rounded-lg object-cover"
-            alt=""
-          />
-          <div className="mt-3 tracking-wide">
-            <p className="text-xl font-bold mb-2">Product Name Here</p>
-            <p>Product Description Here...</p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://m.media-amazon.com/images/I/71e2PifecVL._AC_UL320_.jpg"
-            className="h-[300px] rounded-lg object-cover"
-            alt=""
-          />
-          <div className="mt-3 tracking-wide">
-            <p className="text-xl font-bold mb-2">Product Name Here</p>
-            <p>Product Description Here...</p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/I/51KgyjQM9UL._AC_SX184_.jpg"
-            className="h-[300px] rounded-lg object-cover"
-            alt=""
-          />
-          <div className="mt-3 tracking-wide">
-            <p className="text-xl font-bold mb-2">Product Name Here</p>
-            <p>Product Description Here...</p>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            src="https://images-na.ssl-images-amazon.com/images/I/51fy7EmiT+L._AC_SX184_.jpg"
-            className="h-[300px] rounded-lg object-cover"
-            alt=""
-          />
-          <div className="mt-3 tracking-wide">
-            <p className="text-xl font-bold mb-2">Product Name Here</p>
-            <p>Product Description Here...</p>
-          </div>
-        </SwiperSlide>
+        {dummyData
+          .filter((item) => item.highlight)
+          .map((item) => {
+            return (
+              <SwiperSlide
+                key={item.id}
+                className="flex flex-col border py-5  rounded-lg hover:shadow-md  transition-all duration-300 hover:shadow-gray-300 cursor-pointer"
+              >
+                <div className="flex justify-center">
+                  {' '}
+                  <img
+                    src={item.img}
+                    className="h-[300px] rounded-lg object-cover"
+                    alt=""
+                  />
+                </div>
+
+                <div className="mt-3 tracking-wide ">
+                  <p className="text-xl font-bold mb-2 text-center">
+                    {item.name}
+                  </p>
+                  <p className="w-[50%] mx-auto">{item.description}</p>
+                </div>
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
-      <div className="absolute bottom-5 right-20 flex items-center gap-5">
-        <div ref={navigationPrevRef} className="cursor-pointer">
+      <div
+        className="absolute  -bottom-2 left-1/2 transform -translate-x-1/2 -translate-y-1/2
+flex items-center gap-5 z-50"
+      >
+        <div
+          ref={navigationPrevRef}
+          className="cursor-pointer hover:bg-gray-200 rounded-lg transform hover:scale-[1.01] bg-gray-500 text-white hover:text-black px-2 py-1"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 "
@@ -107,7 +85,10 @@ function BodyHightlight() {
             />
           </svg>
         </div>
-        <div ref={navigationNextRef} className="cursor-pointer">
+        <div
+          ref={navigationNextRef}
+          className="cursor-pointer hover:bg-gray-200 rounded-lg transform hover:scale-[1.01] bg-gray-500 text-white hover:text-black px-2 py-1"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 "

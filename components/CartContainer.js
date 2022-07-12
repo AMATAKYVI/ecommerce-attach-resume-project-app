@@ -1,19 +1,24 @@
 import { Divider } from '@chakra-ui/react';
 import React from 'react';
-
+import { dummyData } from '../dummyData';
+import { truncateString } from '../lib/helperFunction';
 //Was created in 07/11/2022 Monday
 
 const CartItem = ({ item }) => {
   return (
     <div className="flex py-10 ">
       <div className="flex-1 cursor-pointer">
-        <img src={item.img} alt="" />
+        <img
+          src={item.img}
+          alt=""
+          className="w-[80%] mx-auto rounded-lg h-[80%] object-contain"
+        />
       </div>
       <div className="flex-1 flex flex-col justify-between ">
         <div>
-          <h1 className="font-semibold cursor-pointer">{item.name}</h1>
-          <div className="flex items-center gap-5 text-gray-600 text-sm">
-            <p>{item.description}</p>/<p>{item.size}</p>
+          <h1 className="font-semibold cursor-pointer mb-2">{item.name}</h1>
+          <div className="flex items-center gap-5 text-gray-600 text-sm mb-2">
+            <p>{truncateString(item.description, 50)}...</p>/<p>{item.size}</p>
           </div>
           <p className="font-bold text-lg">${item.price}</p>
         </div>
@@ -95,44 +100,7 @@ const CartItem = ({ item }) => {
     </div>
   );
 };
-const dummyData = [
-  {
-    img: 'https://images-na.ssl-images-amazon.com/images/I/41oKX3NFrCL._SX160_QL100_AC_SCLZZZZZZZ_.jpg',
-    id: 1,
-    name: 'Basic Tee',
-    description: 'Sienna',
-    size: 'Large',
-    price: 32,
-    inStock: true,
-  },
-  {
-    img: 'https://images-na.ssl-images-amazon.com/images/I/41oKX3NFrCL._SX160_QL100_AC_SCLZZZZZZZ_.jpg',
-    id: 2,
-    name: 'Basic Tee',
-    description: 'Sienna',
-    size: 'Large',
-    price: 32,
-    inStock: true,
-  },
-  {
-    img: 'https://images-na.ssl-images-amazon.com/images/I/41oKX3NFrCL._SX160_QL100_AC_SCLZZZZZZZ_.jpg',
-    id: 3,
-    name: 'Basic Tee',
-    description: 'Sienna',
-    size: 'Large',
-    price: 32,
-    inStock: true,
-  },
-  {
-    img: 'https://images-na.ssl-images-amazon.com/images/I/41oKX3NFrCL._SX160_QL100_AC_SCLZZZZZZZ_.jpg',
-    id: 4,
-    name: 'Basic Tee',
-    description: 'Sienna',
-    size: 'Large',
-    price: 32,
-    inStock: true,
-  },
-];
+
 function CartContainer() {
   return (
     <div className="flex gap-10">

@@ -1,21 +1,26 @@
 import React from 'react';
+import { dummyData } from '../dummyData';
 
-function CardItem({ imageURL }) {
+function CardItem({ imageURL, item }) {
   return (
-    <div className=" border-black rounded-lg w-[380px] bg-white px-2 pb-2">
+    <div className=" border-black rounded-lg w-[300px]  bg-white px-5 pb-2 hover:shadow-lg hover:shadow-gray-200 transition-all duration-300 cursor-pointer">
       <div className="relative">
-        <img
-          src={imageURL}
-          alt=""
-          className=" h-[350px] object-contain  rounded-t-lg card-image-mask"
-        />
+        <div className="flex justify-center">
+          {' '}
+          <img
+            src={imageURL}
+            alt=""
+            className=" h-[300px] object-contain  rounded-t-lg card-image-mask flex"
+          />
+        </div>
+
         <span className="absolute font-semibold right-5 bottom-0 text-xl bg-amber-200 px-4 py-4 rounded-full">
-          $12.31
+          ${item.price}
         </span>
       </div>
       <div className="mt-2">
-        <h1 className="text-lg font-bold tracking-wide ">Jean Here</h1>
-        <p>Description of the product...</p>
+        <h1 className="text-lg font-bold tracking-wide ">{item.name}</h1>
+        <p>{item.description}</p>
         <div className="w-full text-lg tracking-wide cursor-pointer bg-amber-400 py-2 text-center rounded-lg mt-3">
           <button className=" ">Add to bag</button>
         </div>
@@ -36,27 +41,12 @@ function BodyTrending() {
           </p>
         </div>
 
-        <div className="grid grid-cols-4 gap-10 items-center justify-center w-full mt-5">
-          <CardItem
-            imageURL={
-              'https://images-na.ssl-images-amazon.com/images/I/41oKX3NFrCL._SX160_QL100_AC_SCLZZZZZZZ_.jpg'
-            }
-          />
-          <CardItem
-            imageURL={
-              'https://m.media-amazon.com/images/I/31hSvjeHCZL._AC_SY230_.jpg'
-            }
-          />
-          <CardItem
-            imageURL={
-              'https://m.media-amazon.com/images/I/71i9X6F3raL._AC_UL320_.jpg'
-            }
-          />
-          <CardItem
-            imageURL={
-              'https://m.media-amazon.com/images/I/71nV3Qr2RHL._AC_SX421_SY746_.jpg'
-            }
-          />
+        <div className="grid grid-cols-5 gap-10 items-center justify-center w-full mt-5">
+          {dummyData
+            .filter((item) => item.trending)
+            .map((item) => {
+              return <CardItem key={item.id} imageURL={item.img} item={item} />;
+            })}
         </div>
       </div>
     </div>

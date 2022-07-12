@@ -1,5 +1,5 @@
 import React from 'react';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 function BodyHero() {
   const router = useRouter();
   return (
@@ -11,7 +11,7 @@ function BodyHero() {
         labore atque? Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Earum, neque!
       </p>
-      <div className="mt-4 mx-auto  py-2 px-5 w-fit rounded-md bg-amber-400 text-lg font-semibold tracking-wide" onClick={()=>{router.push('/shopnow')}}>
+      <div className="mt-4 mx-auto  py-2 px-5 w-fit rounded-md bg-amber-400 text-lg font-semibold tracking-wide">
         <button>Shop Now</button>
       </div>
     </div>

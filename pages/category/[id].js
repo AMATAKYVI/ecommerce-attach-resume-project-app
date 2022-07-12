@@ -5,15 +5,20 @@ import React, { useState, useEffect } from 'react';
 import CategoryHeader from '../../components/CategoryHeader';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
+import { dummyData } from '../../dummyData';
 
 function CategoryPage() {
   const router = useRouter();
   const [ifUserSearchPrice, setIfUserSearchPrice] = useState(false);
   const [currentCheckPrice, setCurrentCheckPrice] = useState('');
-  const onChangeAttribute = (value) => {
-    console.log(value);
-    // setCheckBoxChecked(value);
-  };
+  const [productArray, setProductArray] = useState([]);
+  useEffect(() => {
+    if (router.query.params === 'Men') {
+      const data = dummyData.filter((item) => item.for == 'men');
+      console.log(dummyData);
+      setProductArray(data);
+    }
+  }, [router.query.params]);
   useEffect(() => {
     if (ifUserSearchPrice.length < 0) {
       setIfUserSearchPrice((prev) => !prev);
@@ -32,7 +37,7 @@ function CategoryPage() {
         <Divider className="bg-gray-500 pt-[0.4px]" />
       </div>
       <div className="px-10 py-10">
-        <div className="mb-5">
+        <div className="mb-[50px]">
           <h1 className="font-semibold text-5xl mb-5">{router.query.id}</h1>
           <p className="w-[50%] text-lg">
             Check out our new latest arrival, Lorem, ipsum dolor sit amet
@@ -40,12 +45,28 @@ function CategoryPage() {
             necessitatibus quod inventore cupiditate dolore porro voluptatibus.
           </p>
         </div>
-        <Divider className="bg-gray-500 pt-[0.4px] " />
+        <Divider className="bg-gray-500 pt-[0.4px] mb-[20px]" />
         <div>
-          <div className="flex justify-between px-10 pt-10">
+          <div className="flex justify-between px-10 pt-10 ">
             <h1 className="font-semibold text-xl">What you looking for?</h1>
-            <div>
+            <div className="flex items-center gap-2 cursor-pointer">
               <h1>Sort by</h1>
+              <div className="hover:bg-gray-200 rounded-lg transition-all duration-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 text-gray-700"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
           <div className="flex px-10 py-10">
@@ -57,7 +78,7 @@ function CategoryPage() {
                     type="checkbox"
                     name="belowandabove"
                     id="below50"
-                    onClick={(e) => {
+                    onChange={(e) => {
                       if (currentCheckPrice === 'below50') {
                         setCurrentCheckPrice('');
                       } else {
@@ -73,7 +94,7 @@ function CategoryPage() {
                   <input
                     type="checkbox"
                     name="belowandabove"
-                    onClick={(e) => {
+                    onChange={(e) => {
                       if (currentCheckPrice === 'above50') {
                         setCurrentCheckPrice('');
                       } else {
@@ -105,7 +126,36 @@ function CategoryPage() {
                 </div>
               </div>
             </div>
-            <div className="flex-1">123</div>
+            <div className="flex-1 border py-5 px-5">
+              <div className="grid grid-cols-4 gap-5">
+                {dummyData
+                  .filter((item) => item.for === router.query.id.toLowerCase())
+                  .map((item) => {
+                    return (
+                      <div
+                        className="border py-4 px-3 rounded-md shadow-md shadow-gray-100 cursor-pointer hover:shadow-md hover:shadow-gray-200 transition-all duration-200"
+                        key={item.id}
+                      >
+                        <div className="flex items-center justify-center border rounded-lg bg-gray-200 py-2">
+                          <img
+                            src={item.img}
+                            className="h-[200px] object-contain"
+                            alt=""
+                          />
+                        </div>
+                        <div className="text-lg font-semibold">{item.name}</div>
+                        <div className="text-gray-700 text-sm">
+                          {item.description}
+                        </div>
+                        <div className="text-lg font-semibold">
+                          ${item.price}
+                        </div>
+                      </div>
+                    );
+                  })}
+                <img src="" alt="" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
