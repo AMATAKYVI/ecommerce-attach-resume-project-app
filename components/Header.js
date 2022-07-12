@@ -1,6 +1,22 @@
 import { useRouter } from 'next/router';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from '../firebase';
+
 function Header({ imageURL }) {
+  const totalQuantity = useSelector((state) => state.cart.item.totalQuantity);
+  const [user, setUser] = useState(false);
+  console.log(totalQuantity);
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(true);
+      } else {
+        setUser(false);
+      }
+    });
+  }, []);
   const router = useRouter();
   return (
     <div className=" px-5 bg-[rgb(17,24,40)]">
@@ -12,7 +28,7 @@ function Header({ imageURL }) {
           }}
         >
           <img
-            src={`${imageURL? imageURL:'logowithrmbg.png'}`}
+            src={`${imageURL ? imageURL : 'logowithrmbg.png'}`}
             className="w-[70px] h-[70px] object-contain"
             alt="image not loading properly"
           />
@@ -66,6 +82,31 @@ function Header({ imageURL }) {
               <p></p>
             </div>
           </div>
+          {user ? (
+            <div className="cursor-pointer flex items-center flex-col hover:text-gray-300 transition-all duration-300">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-7 w-7"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
+              </svg>
+              <div className="text-sm text-gray-300">
+                <p>name of user</p>
+                <p></p>
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+
           <div>
             <div
               onClick={() => {
@@ -89,19 +130,37 @@ function Header({ imageURL }) {
                   />
                 </svg>
                 <span className="absolute -top-2 -right-1 bg-amber-400 rounded-full text-sm px-1  font-bold text-black">
-                  0
+                  {totalQuantity}
                 </span>
               </div>
 
               <p className="text-sm text-gray-300">Cart</p>
             </div>
           </div>
-          <button
-            className="px-10 rounded-lg font-semibold tracking-wide py-2 bg-[rgb(76,85,100)]"
-            onClick={() => router.push('/login')}
-          >
-            Login
-          </button>
+          {user ? (
+            <button
+              className="px-10 rounded-lg font-semibold tracking-wide py-2 bg-[rgb(76,85,100)]"
+              onClick={() => {
+                signOut(auth)
+                  .then(() => {
+                    // Sign-out successful.
+                  })
+                  .catch((error) => {
+                    // An error happened.
+                    console.log(error);
+                  });
+              }}
+            >
+              Sign Out
+            </button>
+          ) : (
+            <button
+              className="px-10 rounded-lg font-semibold tracking-wide py-2 bg-[rgb(76,85,100)]"
+              onClick={() => router.push('/login')}
+            >
+              Login
+            </button>
+          )}
         </div>
       </div>
     </div>

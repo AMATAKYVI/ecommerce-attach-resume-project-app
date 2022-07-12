@@ -6,12 +6,17 @@ import CategoryHeader from '../../components/CategoryHeader';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { dummyData } from '../../dummyData';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { addItem } from '../../store/cartSlices';
 function CategoryPage() {
+  const dispatch = useDispatch();
   const router = useRouter();
   const [ifUserSearchPrice, setIfUserSearchPrice] = useState(false);
   const [currentCheckPrice, setCurrentCheckPrice] = useState('');
   const [productArray, setProductArray] = useState([]);
+  const handleAddItem = (item) => {
+    dispatch(addItem({ ...item, quantity: 1 }));
+  };
   useEffect(() => {
     if (router.query.params === 'Men') {
       const data = dummyData.filter((item) => item.for == 'men');
@@ -149,6 +154,12 @@ function CategoryPage() {
                         </div>
                         <div className="text-lg font-semibold">
                           ${item.price}
+                        </div>
+                        <div
+                          className="w-full text-lg tracking-wide cursor-pointer bg-amber-400 py-2 text-center rounded-lg mt-3"
+                          onClick={() => handleAddItem(item)}
+                        >
+                          <button className=" ">Add to bag</button>
                         </div>
                       </div>
                     );

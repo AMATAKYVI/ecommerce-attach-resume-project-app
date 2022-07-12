@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { Pagination, Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { dummyData } from '../dummyData';
+import { truncateString } from '../lib/helperFunction';
 
 function BodyHightlight() {
   const navigationPrevRef = useRef(null);
@@ -56,7 +57,9 @@ function BodyHightlight() {
                   <p className="text-xl font-bold mb-2 text-center">
                     {item.name}
                   </p>
-                  <p className="w-[50%] mx-auto">{item.description}</p>
+                  <p className="w-[50%] mx-auto">
+                    {truncateString(item.description, 60)}...
+                  </p>
                 </div>
               </SwiperSlide>
             );
