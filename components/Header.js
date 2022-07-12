@@ -96,7 +96,10 @@ function Header() {
               <p className="text-sm text-gray-300">Cart</p>
             </div>
           </div>
-          <button className="px-10 rounded-lg font-semibold tracking-wide py-2 bg-[rgb(76,85,100)]">
+          <button
+            className="px-10 rounded-lg font-semibold tracking-wide py-2 bg-[rgb(76,85,100)]"
+            onClick={() => router.push('/login')}
+          >
             Login
           </button>
         </div>

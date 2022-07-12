@@ -4,11 +4,15 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import store from '../store/store';
+import { Provider } from 'react-redux';
 function MyApp({ Component, pageProps }) {
   return (
-    <ChakraProvider>
-      <Component {...pageProps} />
-    </ChakraProvider>
+    <Provider store={store}>
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
+    </Provider>
   );
 }
 
