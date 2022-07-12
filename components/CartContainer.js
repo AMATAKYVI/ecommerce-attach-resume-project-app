@@ -125,7 +125,7 @@ const dummyData = [
   },
   {
     img: 'https://images-na.ssl-images-amazon.com/images/I/41oKX3NFrCL._SX160_QL100_AC_SCLZZZZZZZ_.jpg',
-    id: 3,
+    id: 4,
     name: 'Basic Tee',
     description: 'Sienna',
     size: 'Large',
@@ -142,10 +142,10 @@ function CartContainer() {
         <div>
           {dummyData.map((item) => {
             return (
-              <>
+              <div key={item.id}>
                 <Divider className="bg-gray-500 pt-[0.4px] " />
-                <CartItem key={item.id} item={item} />
-              </>
+                <CartItem item={item} />
+              </div>
             );
           })}
         </div>

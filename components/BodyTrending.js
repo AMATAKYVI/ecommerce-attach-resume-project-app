@@ -9,7 +9,7 @@ function CardItem({ imageURL }) {
           alt=""
           className=" h-[350px] object-contain  rounded-t-lg card-image-mask"
         />
-        <span className="absolute right-5 bottom-0 text-xl bg-amber-200 px-4 py-4 rounded-full">
+        <span className="absolute font-semibold right-5 bottom-0 text-xl bg-amber-200 px-4 py-4 rounded-full">
           $12.31
         </span>
       </div>

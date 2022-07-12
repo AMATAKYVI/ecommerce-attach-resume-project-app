@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import React from 'react';
-function Header() {
+function Header({ imageURL }) {
   const router = useRouter();
   return (
     <div className=" px-5 bg-[rgb(17,24,40)]">
@@ -12,9 +12,9 @@ function Header() {
           }}
         >
           <img
-            src="logowithrmbg.png"
+            src={`${imageURL? imageURL:'logowithrmbg.png'}`}
             className="w-[70px] h-[70px] object-contain"
-            alt=""
+            alt="image not loading properly"
           />
           <p>PG</p>
         </div>

@@ -91,7 +91,7 @@ function BodyHightlight() {
         </SwiperSlide>
       </Swiper>
       <div className="absolute bottom-5 right-20 flex items-center gap-5">
-        <div ref={navigationPrevRef}>
+        <div ref={navigationPrevRef} className="cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 "
@@ -107,7 +107,7 @@ function BodyHightlight() {
             />
           </svg>
         </div>
-        <div ref={navigationNextRef}>
+        <div ref={navigationNextRef} className="cursor-pointer">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-6 w-6 "

@@ -1,9 +1,9 @@
-import { Divider } from 'antd';
 import React from 'react';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import { Divider } from '@chakra-ui/react';
 function Footer() {
   return (
     <div>
